@@ -7,6 +7,7 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSend
 
 app = Flask(__name__)
 
+#好煩
 # LINE 聊天機器人的基本資料
 # LINE 的 channel_access_token, channel_secret 換成在 Line Developer 裡的資料
 
