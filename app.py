@@ -67,7 +67,7 @@ def handle_message(event):
         message = function_list()
         line_bot_api.reply_message(event.reply_token, message)
     else:
-        message = TextSendMessage(text=msg)
+        message = TextSendMessage(text="蛤你說什麼"+msg)
         line_bot_api.reply_message(event.reply_token, message)
 
 import os
