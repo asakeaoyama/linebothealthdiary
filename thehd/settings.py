@@ -127,7 +127,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = (os.path.join(BASE_DIR,'static').replace('\\', '/'))
 STATICILES_DIRS = [
-    os.path.join(BASE_DIR,'static').replace('\\', '/'),
+    ('static',os.path.join(BASE_DIR,'static').replace('\\', '/')),
+    ('css', os.path.join(STATIC_ROOT, 'css').replace('\\', '/')),
+    ('images', os.path.join(STATIC_ROOT, 'images').replace('\\', '/')),
+    ('fonts', os.path.join(STATIC_ROOT, 'fonts').replace('\\', '/')),
+    ('js', os.path.join(STATIC_ROOT, 'js').replace('\\', '/')),
 ]
 
 # Default primary key field type
