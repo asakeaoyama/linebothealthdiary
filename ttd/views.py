@@ -41,9 +41,11 @@ def showalluser(request):
 
 @csrf_exempt
 def test(request):
+    names=''
     f=open('food.txt')
     foodlist=f.readlines()
-    return HttpResponse(str(foodlist))
+    names += foodlist + '<br>'
+    return HttpResponse(names)
 
 
 
@@ -71,6 +73,7 @@ def callback(request):
                     name=profile.display_name
                     pic_url=profile.picture_url
                     message=[]
+                    message2=[]
 
                     if event.message.text == '建立會員資料':
                         if User_Info.objects.filter(uid=uid).exists()==False:
@@ -95,8 +98,10 @@ def callback(request):
                     for i in range(4):
                         if event.message.text == foodlist[i].replace("\n",""):
                             cal = cal + int(foodlist[i+1])
+                            message.append(TextSendMessage(text=foodlist[i]))
                             line_bot_api.reply_message(event.reply_token,foodlist[i])
-                    line_bot_api.reply_message(event.reply_token,cal)
+                    message2.append(TextSendMessage(text=str(cal)))
+                    line_bot_api.reply_message(event.reply_token,message2)
 
 
         return HttpResponse()
