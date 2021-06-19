@@ -39,6 +39,14 @@ def showalluser(request):
         names += i.username + '<br>'
     return HttpResponse(names)
 
+@csrf_exempt
+def test(request):
+    f=open('food.txt')
+    foodlist=f.readlines()
+    return HttpResponse(foodlist)
+
+
+
 
 
 @csrf_exempt

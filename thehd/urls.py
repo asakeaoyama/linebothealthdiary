@@ -30,6 +30,7 @@ urlpatterns = [
     url('^callback', views.callback),
     url('^pic',views.pic),
     url('showalluser', views.showalluser),
+    url('test', views.test),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
