@@ -1,17 +1,22 @@
 from django.shortcuts import render
 
 from ttd.models import *
+import os
+from pathlib import Path
 
 # Create your views here.
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
 
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import *
 
 from datetime import datetime
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
@@ -25,6 +30,14 @@ def homepage(request):
 @csrf_exempt
 def pic(request):
     return render(request, 'surprise.html')
+
+@csrf_exempt
+def showalluser(request):
+    names = ''
+    for i in User.objects.all():
+        #myname += str(i) + '<br>'
+        names += i.username + '<br>'
+    return HttpResponse(names)
 
 
 
@@ -67,7 +80,15 @@ def callback(request):
                         line_bot_api.reply_message(event.reply_token,message)
                     elif event.message.text == '51d帥照' :
                         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://spacetotest.herokuapp.com/static/kai.jpg', preview_image_url='https://spacetotest.herokuapp.com/static/kai.jpg'))
-                        
+                    
+                    f=open('food.txt')
+                    foodlist=f.readlines()
+                    cal = 0
+                    for i in range(4):
+                        if TextSendMessage == foodlist[i]:
+                            cal = cal + int(foodlist[i+1])
+                            print(TextMessage)
+                    print(cal)
 
 
         return HttpResponse()
