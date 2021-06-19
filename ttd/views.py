@@ -90,13 +90,14 @@ def callback(request):
                     elif event.message.text == '51d帥照' :
                         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://spacetotest.herokuapp.com/static/kai.jpg', preview_image_url='https://spacetotest.herokuapp.com/static/kai.jpg'))
                     
+                    testtext=event.message.text
                     f=open('%s/food.txt' %BASE_DIR)
                     foodlist=f.readlines()
                     cal = 0
                     seqnum = 0
-                    mes=event.message.text.split(" ")
-                    for s in len(event.message.text):
-                        if event.message.text == " ":
+                    mes=testtext.split(" ")
+                    for s in len(testtext):
+                        if testtext[s] == " ":
                             seqnum = seqnum + 1
                     seqnum = seqnum + 1
                     message.append(TextSendMessage(text=seqnum))
