@@ -91,26 +91,25 @@ def callback(request):
                         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://spacetotest.herokuapp.com/static/kai.jpg', preview_image_url='https://spacetotest.herokuapp.com/static/kai.jpg'))
                     
                    
-                    testtext=str(event.message.text)
+
                     seqnum = 0
-                    mes=testtext.split(" ")
-                    for s in range(len(testtext)):
-                        if testtext[s] == " ":
+                    mes=event.message.text.split(" ")
+                    for s in range(len(event.message.text)):
+                        if event.message.text[s] == " ":
                             seqnum = seqnum + 1
                     seqnum = seqnum + 1
-                    '''message.append(TextSendMessage(text=seqnum))
-                    line_bot_api.reply_message(event.reply_token,message)'''
+                    message.append(TextSendMessage(text=mes[0]))
+                    line_bot_api.reply_message(event.reply_token,message)
 
                     f=open('%s/food.txt' %BASE_DIR)
                     foodlist=f.readlines()
                     cal = 0
-                    line_bot_api.reply_message(event.reply_token,message)
-                    for n in range(seqnum):
+                    '''for n in range(seqnum):
                         for i in range(132):
                             if mes[n] == foodlist[i].replace("\n",""):
                                 cal = cal + int(foodlist[i+1].replace("\n",""))
                     message.append(TextSendMessage(text=cal))
-                    line_bot_api.reply_message(event.reply_token,message)
+                    line_bot_api.reply_message(event.reply_token,message)'''
                     f.close()
 
 
