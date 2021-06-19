@@ -41,12 +41,11 @@ def showalluser(request):
 
 @csrf_exempt
 def test(request):
-    '''names=''
+    names=''
     f=open('food.txt')
-    foodlist=f.readlines()
+    foodlist=f.readline()
     names += foodlist + '<br>'
-    return HttpResponse(names)'''
-    return render(request, 'surprise.html')
+    return HttpResponse(names)
 
 
 
@@ -101,6 +100,7 @@ def callback(request):
                             message.append(TextSendMessage(text=foodlist[i]))
                             line_bot_api.reply_message(event.reply_token,message)
                     message2.append(TextSendMessage(text=str(cal)))
+                    message2.append(TextSendMessage(text=foodlist[0]))
                     line_bot_api.reply_message(event.reply_token,message2)
 
 
