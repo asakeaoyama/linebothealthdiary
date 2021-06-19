@@ -96,11 +96,11 @@ def callback(request):
                     cal = 0
                     for i in range(4):
                         if event.message.text == foodlist[i].replace("\n",""):
-                            cal = cal + int(foodlist[i+1].replace("\n",""))
+                            cal = int(foodlist[i+1].replace("\n",""))
                             message.append(TextSendMessage(text=foodlist[i]))
-                            #line_bot_api.reply_message(event.reply_token,message)
+                            line_bot_api.reply_message(event.reply_token,message)
                     message2.append(TextSendMessage(text=cal))
-                    message2.append(TextSendMessage(text=foodlist[1].replace("\n","")))
+                    message2.append(TextSendMessage(text=foodlist[2].replace("\n","")))
                     line_bot_api.reply_message(event.reply_token,message2)
 
 
