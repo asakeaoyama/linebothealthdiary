@@ -104,13 +104,13 @@ def callback(request):
                     f=open('%s/food.txt' %BASE_DIR)
                     foodlist=f.readlines()
                     cal = 0
-                    message.append(TextSendMessage(text=event.message.text))
                     line_bot_api.reply_message(event.reply_token,message)
-                    '''for i in range(132):
-                        if event.message.text == foodlist[i].replace("\n",""):
-                            cal = int(foodlist[i+1].replace("\n",""))
-                            message.append(TextSendMessage(text=cal))
-                            line_bot_api.reply_message(event.reply_token,message)'''
+                    for n in range(seqnum):
+                        for i in range(132):
+                            if mes[n] == foodlist[i].replace("\n",""):
+                                cal = cal + int(foodlist[i+1].replace("\n",""))
+                    message.append(TextSendMessage(text=cal))
+                    line_bot_api.reply_message(event.reply_token,message)
                     f.close()
 
 
