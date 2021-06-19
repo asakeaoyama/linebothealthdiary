@@ -94,7 +94,7 @@ def callback(request):
                     foodlist=f.readlines()
                     cal = 0
                     seqnum = 0
-                    mes=event.message.text.split("\n")
+                    mes=event.message.text.split(" ")
                     for s in len(event.message.text):
                         if event.message.text == "\n":
                             seqnum = seqnum + 1
