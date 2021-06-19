@@ -72,7 +72,6 @@ def callback(request):
                     name=profile.display_name
                     pic_url=profile.picture_url
                     message=[]
-                    message2=[]
 
                     if event.message.text == '建立會員資料':
                         if User_Info.objects.filter(uid=uid).exists()==False:
@@ -94,14 +93,20 @@ def callback(request):
                     f=open('%s/food.txt' %BASE_DIR)
                     foodlist=f.readlines()
                     cal = 0
-                    for i in range(132):
+                    seqnum = 0
+                    mes=event.message.text.split("\n")
+                    for s in len(event.message.text):
+                        if event.message.text == "\n":
+                            seqnum = seqnum + 1
+                    seqnum = seqnum + 1
+                    message.append(TextSendMessage(text=seqnum))
+                    line_bot_api.reply_message(event.reply_token,message)
+                    '''for i in range(132):
                         if event.message.text == foodlist[i].replace("\n",""):
                             cal = int(foodlist[i+1].replace("\n",""))
                             message.append(TextSendMessage(text=cal))
-                            line_bot_api.reply_message(event.reply_token,message)
-                    message2.append(TextSendMessage(text=cal))
-                    message2.append(TextSendMessage(text=foodlist[2].replace("\n","")))
-                    line_bot_api.reply_message(event.reply_token,message2)
+                            line_bot_api.reply_message(event.reply_token,message)'''
+                    f.close()
 
 
         return HttpResponse()
