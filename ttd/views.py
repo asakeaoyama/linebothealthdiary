@@ -94,10 +94,10 @@ def callback(request):
                     testtext=str(event.message.text)
                     seqnum = 0
                     mes=testtext.split(" ")
-                    for s in len(testtext):
+                    '''for s in len(testtext):
                         if testtext[s] == " ":
                             seqnum = seqnum + 1
-                    seqnum = seqnum + 1
+                    seqnum = seqnum + 1'''
                     message.append(TextSendMessage(text=event.message.text))
                     line_bot_api.reply_message(event.reply_token,message)
 
