@@ -96,10 +96,10 @@ def callback(request):
                     seqnum = 0
                     mes=event.message.text.split(" ")
                     for s in len(event.message.text):
-                        if event.message.text == "\n":
+                        if event.message.text == " ":
                             seqnum = seqnum + 1
                     seqnum = seqnum + 1
-                    message.append(TextSendMessage(text=mes))
+                    message.append(TextSendMessage(text=seqnum))
                     line_bot_api.reply_message(event.reply_token,message)
                     '''for i in range(132):
                         if event.message.text == foodlist[i].replace("\n",""):
