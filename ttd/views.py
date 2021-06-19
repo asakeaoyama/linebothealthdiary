@@ -94,11 +94,11 @@ def callback(request):
                     testtext=str(event.message.text)
                     seqnum = 0
                     mes=testtext.split(" ")
-                    '''for s in len(testtext):
+                    for s in range(len(testtext)):
                         if testtext[s] == " ":
                             seqnum = seqnum + 1
-                    seqnum = seqnum + 1'''
-                    message.append(TextSendMessage(text=testtext))
+                    seqnum = seqnum + 1
+                    message.append(TextSendMessage(text=seqnum))
                     line_bot_api.reply_message(event.reply_token,message)
 
                     f=open('%s/food.txt' %BASE_DIR)
