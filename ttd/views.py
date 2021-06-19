@@ -85,10 +85,10 @@ def callback(request):
                     foodlist=f.readlines()
                     cal = 0
                     for i in range(4):
-                        if TextSendMessage == foodlist[i]:
+                        if event.message.text == foodlist[i]:
                             cal = cal + int(foodlist[i+1])
-                            print(TextMessage)
-                    print(cal)
+                            line_bot_api.reply_message(event.reply_token,foodlist[i])
+                    line_bot_api.reply_message(event.reply_token,cal)
 
 
         return HttpResponse()
