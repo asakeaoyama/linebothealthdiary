@@ -98,8 +98,8 @@ def callback(request):
                         if testtext[s] == " ":
                             seqnum = seqnum + 1
                     seqnum = seqnum + 1
-                    message.append(TextSendMessage(text=seqnum))
-                    line_bot_api.reply_message(event.reply_token,message)
+                    '''message.append(TextSendMessage(text=seqnum))
+                    line_bot_api.reply_message(event.reply_token,message)'''
 
                     f=open('%s/food.txt' %BASE_DIR)
                     foodlist=f.readlines()
