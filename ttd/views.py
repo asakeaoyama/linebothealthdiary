@@ -42,7 +42,7 @@ def showalluser(request):
 @csrf_exempt
 def test(request):
     f=open('food.txt')
-    foodlist=f.readlines()
+    foodlist=f.readline()
     return HttpResponse(foodlist)
 
 
