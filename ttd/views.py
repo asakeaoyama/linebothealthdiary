@@ -100,7 +100,7 @@ def callback(request):
                         if testtext[s] == " ":
                             seqnum = seqnum + 1
                     seqnum = seqnum + 1
-                    message.append(TextSendMessage(text=testtext))
+                    message.append(TextSendMessage(text=event.message.text))
                     line_bot_api.reply_message(event.reply_token,message)
                     '''for i in range(132):
                         if event.message.text == foodlist[i].replace("\n",""):
