@@ -34,7 +34,7 @@ def pic(request):
 @csrf_exempt
 def showalluser(request):
     names = ''
-    for i in User.objects.all():
+    for i in User_Info.objects.all():
         #myname += str(i) + '<br>'
         names += i.username + '<br>'
     return HttpResponse(names)
@@ -73,7 +73,7 @@ def callback(request):
                     pic_url=profile.picture_url
                     message=[]
 
-                    seqnum = 0
+                    seqnum = 0 
                     mes=event.message.text.split(" ")
                     for s in range(len(event.message.text)):
                         if event.message.text[s] == " ":
@@ -96,7 +96,7 @@ def callback(request):
                     elif mes[0] == '你好胖':
                         message.append(TextSendMessage(text='你媽才胖'))
                         line_bot_api.reply_message(event.reply_token,message)
-                    elif mes[0] == '51d帥照' :
+                    elif mes[0] == '性感jk衣衫不整' :
                         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://spacetotest.herokuapp.com/static/kai.jpg', preview_image_url='https://spacetotest.herokuapp.com/static/kai.jpg'))
 
                     elif mes[0] == '使用說明':
