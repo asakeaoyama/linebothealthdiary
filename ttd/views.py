@@ -115,7 +115,7 @@ def callback(request):
                         highth=float(mes[1])/100
                         weight=float(mes[2])
                         bmi=float(weight/(highth * highth))
-                        message.append(TextSendMessage(text=mes[1]))
+                        message.append(TextSendMessage(text=bmi))
                         line_bot_api.reply_message(event.reply_token,message)
 
 
