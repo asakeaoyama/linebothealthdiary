@@ -112,10 +112,10 @@ def callback(request):
                         f.close()
                     
                     elif mes[0] == 'bmi':
-                        highth=float(mes[1])/100
+                        highth=float((mes[1])/100)
                         weight=float(mes[2])
                         bmi=float(weight/((highth)^2))
-                        message.append(TextSendMessage(text='your bmi = %.2f' %highth))
+                        message.append(TextSendMessage(text=highth))
                         line_bot_api.reply_message(event.reply_token,message)
 
 
