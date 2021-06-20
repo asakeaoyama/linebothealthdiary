@@ -24,7 +24,7 @@ parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
 
 @csrf_exempt
 def homepage(request):
-    return render(request, 'healdiary.html')
+    return render(request, 'healthdiary.html')
 
 
 @csrf_exempt
