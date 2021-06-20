@@ -99,6 +99,12 @@ def callback(request):
                     elif mes[0] == '51d帥照' :
                         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://spacetotest.herokuapp.com/static/kai.jpg', preview_image_url='https://spacetotest.herokuapp.com/static/kai.jpg'))
 
+                    elif mes[0] == '使用說明':
+                        message.append(TextSendMessage(text='目前只能算熱量及bmi'))
+                        message.append(TextSendMessage(text='若要算熱量請依照[算熱量 食物 食物 食物]格式輸入'))
+                        message.append(TextSendMessage(text='若要算bmi請依照[bmi 身高 體重]格式輸入'))
+                        line_bot_api.reply_message(event.reply_token,message)
+
                     elif mes[0] == '算熱量' :
                         f=open('%s/food.txt' %BASE_DIR)
                         foodlist=f.readlines()
@@ -107,7 +113,7 @@ def callback(request):
                             for i in range(132):
                                 if mes[n] == foodlist[i].replace("\n",""):
                                     cal = cal + int(foodlist[i+1].replace("\n",""))
-                        message.append(TextSendMessage(text=cal))
+                        message.append(TextSendMessage(text='%s cal' %cal))
                         line_bot_api.reply_message(event.reply_token,message)
                         f.close()
                     
