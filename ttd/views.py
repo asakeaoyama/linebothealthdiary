@@ -112,7 +112,7 @@ def callback(request):
                         f.close()
                     
                     elif mes[0] == 'bmi':
-                        highth=float((mes[1])/100)
+                        highth=float(float(mes[1])/100)
                         weight=float(mes[2])
                         bmi=float(weight/((highth)^2))
                         message.append(TextSendMessage(text=highth))
