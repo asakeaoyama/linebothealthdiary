@@ -73,7 +73,16 @@ def callback(request):
                     pic_url=profile.picture_url
                     message=[]
 
-                    if event.message.text == '建立會員資料':
+                    seqnum = 0
+                    mes=event.message.text.split(" ")
+                    for s in range(len(event.message.text)):
+                        if event.message.text[s] == " ":
+                            seqnum = seqnum + 1
+                    seqnum = seqnum + 1
+                    '''message.append(TextSendMessage(text=mes[0]))
+                    line_bot_api.reply_message(event.reply_token,message)'''
+
+                    if mes[0] == '建立會員資料':
                         if User_Info.objects.filter(uid=uid).exists()==False:
                             User_Info.objects.create(uid=uid,name=name,pic_url=pic_url,mtext=mtext)
                             message.append(TextSendMessage(text='會員資料新增完畢'))
@@ -84,33 +93,30 @@ def callback(request):
                                 info = 'UID=%s\nNAME=%s\n大頭貼=%s'%(user.uid,user.name,user.pic_url)
                                 message.append(TextSendMessage(text=info))
                         line_bot_api.reply_message(event.reply_token,message)
-                    elif event.message.text == '你好胖':
+                    elif mes[0] == '你好胖':
                         message.append(TextSendMessage(text='你媽才胖'))
                         line_bot_api.reply_message(event.reply_token,message)
-                    elif event.message.text == '51d帥照' :
+                    elif mes[0] == '51d帥照' :
                         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://spacetotest.herokuapp.com/static/kai.jpg', preview_image_url='https://spacetotest.herokuapp.com/static/kai.jpg'))
+
+                    elif mes[0] == '算熱量' :
+                        f=open('%s/food.txt' %BASE_DIR)
+                        foodlist=f.readlines()
+                        cal = 0
+                        for n in range(1,seqnum):
+                            for i in range(132):
+                                if mes[n] == foodlist[i].replace("\n",""):
+                                    cal = cal + int(foodlist[i+1].replace("\n",""))
+                        message.append(TextSendMessage(text=cal))
+                        line_bot_api.reply_message(event.reply_token,message)
+                        f.close()
                     
-                   
-
-                    seqnum = 0
-                    mes=event.message.text.split(" ")
-                    for s in range(len(event.message.text)):
-                        if event.message.text[s] == " ":
-                            seqnum = seqnum + 1
-                    seqnum = seqnum + 1
-                    '''message.append(TextSendMessage(text=mes[0]))
-                    line_bot_api.reply_message(event.reply_token,message)'''
-
-                    f=open('%s/food.txt' %BASE_DIR)
-                    foodlist=f.readlines()
-                    cal = 0
-                    for n in range(seqnum):
-                        for i in range(132):
-                            if mes[n] == foodlist[i].replace("\n",""):
-                                cal = cal + int(foodlist[i+1].replace("\n",""))
-                    message.append(TextSendMessage(text=cal))
-                    line_bot_api.reply_message(event.reply_token,message)
-                    f.close()
+                    elif mes[0] == 'bmi':
+                        highth=int(mes[1])
+                        weight=int(mes[2])
+                        bmi=weight/((highth)^2)
+                        message.append(TextSendMessage(text=bmi))
+                        line_bot_api.reply_message(event.reply_token,message)
 
 
         return HttpResponse()
