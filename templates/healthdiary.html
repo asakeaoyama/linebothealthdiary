@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<header>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/heaithdiary.css' %}" />
+    <title>登入頁面</title>
+    <link rel="stylesheet" type="text/css" href="login.css" />
+    <script type="text/javascript" src="login.js"></script>
+</header>
+<!--
+<body>
+    <font size="6" color="FF0087" face="fantasy">Healthdiary</font>
+</body>-->
+
+
+<body>
+    <!--<div id="header" style="background-color:#00ffeef6; ">
+        <h1 style="margin-bottom:0;"> Welcome to healthdiary
+        </h1>
+    </div>
+-->
+
+    <img src="{% static 'images/head.jpg' %}" style="width: 100%"></img>
+    <div id="login_frame" style="left: 20px; position: absolute; top: 165px;">
+        <form method="post" action="login.js">
+            <p><label class="label_input">使用者名稱</label><input type="text" id="username" class="text_field" /></p>
+            <p><label class="label_input">密碼</label><input type="text" id="password" class="text_field" /></p>
+            <div id="login_control">
+                <!--<input type="button" id="btn_login" value="登入" onclick="login();" />-->
+                <a href="https://thehealthdiary.w3spaces.com/index.html?bypass-cache=1624114444"><input type="button"
+                        id="btn_login" value="登入" onclick="login();" /></a>
+                <a id="forget_pwd" href="forget_pwd.html">忘記密碼？</a>
+            </div>
+        </form>
+    </div>
+    <div style="left: 0px; position: absolute; top: 350px;">
+        <ul>
+            <li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4086">全榖雜糧類</a></li>
+            <li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4086">蔬菜類</a></li>
+            <li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4086">蛋豆魚肉類</a></li>
+            <li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4086">乳品類</a></li>
+            <li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4086">水果類</a></li>
+            <ul>
+    </div>
+    <div style="left: 299.9px; position: absolute; top: 127.5px;">
+        <!--<div id="header1"> Healthdiary
+        </div>-->
+        <img src="https://static.accupass.com/eventbanner/2007100405472128316019.jpg" alt="瑜珈" title="healthdiary"
+            border="10" width="340.2px" height="170.1px">
+        <div id="body" style="left: -140px; position: absolute; top: 190px;">立偉老師對不起，我們真的無法啦</div>
+        <div id="Footer" style="left: -340px; position: absolute; top: 450px;">THE END</div>
+        </dody>
+
+
+        <footer>
+
+        </footer>

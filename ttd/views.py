@@ -24,7 +24,7 @@ parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
 
 @csrf_exempt
 def homepage(request):
-    return render(request, 'home.html',{'current_time': str(datetime.now()),})
+    return render(request, 'healdiary.html')
 
 
 @csrf_exempt
