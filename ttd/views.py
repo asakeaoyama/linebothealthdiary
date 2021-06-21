@@ -103,6 +103,7 @@ def callback(request):
                         message.append(TextSendMessage(text='目前只能算熱量及bmi'))
                         message.append(TextSendMessage(text='若要算熱量請依照[算熱量 食物 食物 食物]格式輸入'))
                         message.append(TextSendMessage(text='若要算bmi請依照[bmi 身高 體重]格式輸入'))
+                        message.append(TextSendMessage(text='歡迎至官網thehealthdiary.herokuapp.com'))
                         line_bot_api.reply_message(event.reply_token,message)
 
                     elif mes[0] == '算熱量' :
